@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_20_092100) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_20_095623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,8 +25,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_20_092100) do
     t.bigint "teacher_id", null: false
     t.bigint "classroom_id", null: false
     t.bigint "subject_id", null: false
-    t.time "start_time", null: false
-    t.time "end_time", null: false
+    t.datetime "start_time", precision: nil, null: false
+    t.datetime "end_time", precision: nil, null: false
     t.string "days", null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
