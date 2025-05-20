@@ -43,6 +43,7 @@ gem "thruster", require: false
 gem "prawn", "~> 2.4" # for generating pdfs
 gem "prawn-table", "~> 0.2.2" # for adding tables to prawn pdfs, -
 gem 'active_model_serializers', '~> 0.10.14'
+gem 'pdf-reader'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
