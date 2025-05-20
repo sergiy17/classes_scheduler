@@ -92,11 +92,25 @@ RSpec.describe StudentsController, type: :controller do
 
   describe 'GET #schedule_pdf' do
     context 'when student exists' do
-      it 'returns a PDF with the student’s schedule' do
+      it 'calls the correct service' do
+        expect_any_instance_of(SchedulePdfService).to receive(:generate)
+        get :schedule_pdf, params: { id: student.id }
+      end
+
+      it 'returns a PDF with the student’s schedule using SchedulePdfService' do
         create(:student_section, student: student, section: section)
         get :schedule_pdf, params: { id: student.id }
         expect(response).to have_http_status(:ok)
         expect(response.header['Content-Type']).to eq('application/pdf')
+
+        pdf = PDF::Reader.new(StringIO.new(response.body))
+        pdf_text = pdf.pages.first.text
+
+        expect(pdf_text).to include("Schedule for #{student.name}")
+        expect(pdf_text).to include('Time: 08:00 AM - 08:50 AM')
+        expect(pdf_text).to include('Days: Monday, Wednesday, Friday')
+        expect(pdf_text).to include("Teacher: #{section.teacher.name}")
+        expect(pdf_text).to include("Classroom: #{section.classroom.name}")
       end
     end
 
