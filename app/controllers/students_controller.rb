@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :set_student, only: [:add_section, :remove_section, :schedule_pdf]
 
   def show
