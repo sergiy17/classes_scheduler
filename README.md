@@ -1,24 +1,49 @@
-# README
+# Classes scheduler | Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A foundation for a university course scheduling system
 
-Things you may want to cover:
+<details>
+  <summary>Project setup</summary>
+                            
+1. Clone the repo with `git clone https://github.com/sergiy17/classes_scheduler.git`
+2. `bundle && rails db:setup && rails s`
+</details>
 
-* Ruby version
+<details>
+  <summary>Requests examples and screenshots</summary>
 
-* System dependencies
+```
+GET to http://127.0.0.1:3000/students/:id/schedule_pdf
+```
+To view / generate the student's PDF
 
-* Configuration
+<img width="1722" alt="Image" src="https://github.com/user-attachments/assets/0780c2d6-b71f-4331-a163-fed6e8c0b4b1" />
 
-* Database creation
+```
+GET to http://127.0.0.1:3000/students/:id
+```
 
-* Database initialization
+To view the detailed student info 
 
-* How to run the test suite
+<img width="1119" alt="Image" src="https://github.com/user-attachments/assets/334e9202-ac8f-4b8a-93b7-a7908829574e" />
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+POST to http://127.0.0.1:3000/students/:id/add_section
+```
+`body: { section_id: 1 }`
 
-* Deployment instructions
+To add section
 
-* ...
+<img width="1140" alt="Image" src="https://github.com/user-attachments/assets/e3338081-db6a-4dc9-8eb1-9e3679b6709e" />
+
+```
+DELETE to http://127.0.0.1:3000/students/:id/remove_section
+```
+`body: { section_id: 1 }`
+
+To remove section
+
+<img width="1166" alt="Image" src="https://github.com/user-attachments/assets/c7883663-4944-45fc-a14c-f15dd8a1a6cf" />
+
+
+</details>
